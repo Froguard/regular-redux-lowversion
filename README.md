@@ -20,3 +20,4 @@
 
 > 配合 [redux-promise-middleware](https://www.npmjs.com/package/redux-promise-middleware) 插件一起食用，效果更好
 
+> 避免组件的data对象过大，有些信息并不是必要的，建议不要将整个store以及整个state都放到data上，这也是这里不提供mapState2Data的原因，因为跟业务逻辑有些挂钩了
