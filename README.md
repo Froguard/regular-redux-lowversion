@@ -10,7 +10,9 @@
 
 > 改进3：provider作为一个特殊的container，并不额外增加组件，而是采用mixin方式，将root根组件转变成provider
 
-> 改进4：友好的提示，可能出现的错误以及同时提供修改建议
+> 改进4：container的初始化可以传入actionCreators对象，按需进行actions的配置
+
+> 改进5：友好的提示，可能出现的错误以及同时提供修改建议
 
 建议：
 
@@ -21,3 +23,13 @@
 > 配合 [redux-promise-middleware](https://www.npmjs.com/package/redux-promise-middleware) 插件一起食用，效果更好
 
 > 避免组件的data对象过大，有些信息并不是必要的，建议不要将整个store以及整个state都放到data上，这也是这里不提供mapState2Data的原因，因为跟业务逻辑有些挂钩了
+
+潜在问题：
+
+> 如果使用的RegularJs版本低于0.5.0的话，会出现 [regularjs的一个mixin导致event覆盖的坑](https://github.com/regularjs/regular/issues/97)
+解决方法有两种:
+    
+```
+方法1：换一种方式实现event中的回调，init或者config中采用this.$on('evtName',function(){});的方式
+方法2：升级regularjs版本
+```
